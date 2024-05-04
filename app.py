@@ -49,5 +49,9 @@ def dashboard():
 def graph():
     return render_template('graph.html')
 
+@app.route('/dietchart')
+def dietchart():
+    return render_template('dietchart.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
