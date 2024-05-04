@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/students.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+  <h1>Student Records</h1>
+  <input type="text" id="searchInput" placeholder="Search by category...">
+  <div class="row">
+    {% for student in student_records %}
+    <div class="card">
+      <img src="{{ student.photo }}" alt="{{ student.name }}">
+      <div class="info">
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Sport:</strong> {{ student.sport }}</p>
+        <p><strong>Age:</strong> {{ student.age }}</p>
+        <p><strong>Join Date:</strong> {{ student.join_date }}</p>
+        <p><strong>Weight:</strong> {{ student.weight }}</p>
+        <p><strong>Height:</strong> {{ student.height }}</p>
+        <p><strong>Health Condition:</strong> {{ student.health_condition }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+    // Sample student records
+const students = [
+  { name: "John Doe", sport: "Football", age: 20, join_date: "2022-01-01", weight: 70, height: 180, health_condition: "Good" },
+  { name: "Jane Smith", sport: "Basketball", age: 22, join_date: "2021-12-15", weight: 65, height: 175, health_condition: "Excellent" },
+  // Add more student records here
+];
+
+// Function to display student records
+function displayStudentRecords(records) {
+  const studentRecordsDiv = document.getElementById("studentRecords");
+  studentRecordsDiv.innerHTML = "";
+  records.forEach(student => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <img src="student-photo-placeholder.jpg" alt="${student.name}">
+      <div class="info">
+        <p><strong>Name:</strong> ${student.name}</p>
+        <p><strong>Sport:</strong> ${student.sport}</p>
+        <p><strong>Age:</strong> ${student.age}</p>
+        <p><strong>Join Date:</strong> ${student.join_date}</p>
+        <p><strong>Weight:</strong> ${student.weight}</p>
+        <p><strong>Height:</strong> ${student.height}</p>
+        <p><strong>Health Condition:</strong> ${student.health_condition}</p>
+      </div>
+    `;
+    studentRecordsDiv.appendChild(card);
+  });
+}
+
+// Function to filter student records based on search query
+function filterStudentRecords(category, query) {
+  const filteredRecords = students.filter(student => student[category].toLowerCase().includes(query.toLowerCase()));
+  displayStudentRecords(filteredRecords);
+}
+
+// Event listener for search input
+document.getElementById("searchInput").addEventListener("input", function() {
+  const category = "sport"; // Change this to the desired category to search (e.g., "name", "sport", etc.)
+  const query = this.value;
+  filterStudentRecords(category, query);
+});
+
+// Display all student records initially
+displayStudentRecords(students);
+
+</script>
+</body>
+</html>
