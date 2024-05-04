@@ -32,5 +32,9 @@ def centers():
 def otp():
     return render_template('otp.html')
 
+@app.route('/students')
+def students():
+    return render_template('students.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
