@@ -1,0 +1,72 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .food-items {
+    margin-top: 30px;
+  }
+  
+  .meal {
+    margin-bottom: 30px;
+  }
+  
+  .meal h3 {
+    color: #009688;
+    margin-bottom: 10px;
+  }
+  
+  .food-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .food-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .food-details {
+    flex: 1;
+  }
+  
+  .food-details h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .food-details p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
