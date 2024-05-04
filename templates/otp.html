@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter OTP</title>
+  <link rel="stylesheet" href="otp.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Enter OTP</h2>
+    <form id="otpForm" action="javascript:;" method="POST">
+      <div class="otp-input">
+        <input type="text" id="digit1" name="digit1" maxlength="1" required autofocus>
+        <input type="text" id="digit2" name="digit2" maxlength="1" required>
+        <input type="text" id="digit3" name="digit3" maxlength="1" required>
+        <input type="text" id="digit4" name="digit4" maxlength="1" required>
+      </div>
+      <div id="error-message" style="color: red; margin-bottom: 10px; display: none;">Incorrect OTP. Please try again.</div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script>
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var inputs = document.querySelectorAll('input[type="text"]');
+    var errorMessage = document.getElementById('error-message');
+
+    document.getElementById('otpForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var enteredOTP = "";
+        inputs.forEach(function(input) {
+            enteredOTP += input.value;
+        });
+
+        // For demonstration purpose, assume the correct OTP is '1234'
+        var correctOTP = "1234";
+
+        if (enteredOTP === correctOTP) {
+            // Redirect to dashboard.html if OTP is correct
+            window.location.href = "dashboard.html";
+        } else {
+            // Show error message if OTP is incorrect
+            errorMessage.style.display = 'block';
+            // Clear input fields for re-entry
+            inputs.forEach(function(input) {
+                input.value = '';
+            });
+            // Focus on the first input field
+            inputs[0].focus();
+        }
+    });
+
+    inputs.forEach(function(input, index) {
+        input.addEventListener('input', function() {
+            if (this.value.length === this.maxLength) {
+                var nextInput = inputs[index + 1];
+                if (nextInput) {
+                    nextInput.focus();
+                } else {
+                    document.getElementById('otpForm').submit();
+                }
+            }
+        });
+
+        input.addEventListener('keydown', function(event) {
+            if (event.key === 'Backspace' && this.value.length === 0) {
+                var prevInput = inputs[index - 1];
+                if (prevInput) {
+                    prevInput.focus();
+                }
+            }
+        });
+    });
+});
+
+  </script>
+</body>
+</html>
