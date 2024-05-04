@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Progress</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Mild blue background */
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4682b4; /* Steel blue background */
+            padding: 5px 20px; /* Reduced padding */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000; /* Ensure the header is on top */
+            height: 40px; /* Reduced header height */
+        }
+
+        .back-arrow {
+            cursor: pointer;
+        }
+
+        .back-arrow svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+            margin-right: 10px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px; /* Max width to ensure responsiveness */
+            margin-top: 10px; /* Adjust margin for header height */
+        }
+
+        .chart {
+
+            margin-top: 200px;
+            max-width: 360px; /* Set maximum width for each chart */
+        }
+
+        .graph-name {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow" onclick="goBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11H7.414l3.293-3.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-5 5a.996.996 0 0 0 0 1.414l5 5c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"/></svg>
+        </div>
+        <h1>Student Progress</h1>
+    </div>
+
+    <div class="chart-container">
+        <!-- Canvas element for rendering the weight chart -->
+        <div class="chart">
+            <canvas id="weightChart" width="400" height="400"></canvas>
+            <div class="graph-name">Weight Growth</div>
+        </div>
+
+        <!-- Canvas element for rendering the nutrition chart -->
+        <div class="chart">
+            <canvas id="nutritionChart" width="400" height="400"></canvas>
+            <div class="graph-name">Nutrition Intake</div>
+        </div>
+
+        <!-- Canvas element for rendering the workout time chart -->
+        <div class="chart">
+            <canvas id="workoutChart" width="400" height="400"></canvas>
+            <div class="graph-name">Workout Time</div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data - replace this with your actual data
+        const weightData = [
+            { month: 'January', weight: 50 },
+            { month: 'February', weight: 65 },
+            { month: 'March', weight: 66 },
+            { month: 'April', weight: 57 },
+            { month: 'May', weight: 160 },
+            { month: 'June', weight: 165 },
+            { month: 'July', weight: 162 },
+            { month: 'August', weight: 168 },
+            { month: 'September', weight: 170 },
+            { month: 'October', weight: 75 },
+            { month: 'November', weight: 80 },
+            { month: 'December', weight: 95 }
+        ];
+
+        const nutritionData = [
+            { month: 'January', intake: 1100 },
+            { month: 'February', intake: 1100 },
+            { month: 'March', intake: 1550 },
+            { month: 'April', intake: 1650 },
+            { month: 'May', intake: 1700 },
+            { month: 'June', intake: 1750 },
+            { month: 'July', intake: 1800 },
+            { month: 'August', intake: 1150 },
+            { month: 'September', intake: 600 },
+            { month: 'October', intake: 450 },
+            { month: 'November', intake: 700 },
+            { month: 'December', intake: 1750 }
+        ];
+
+        const workoutData = [
+            { month: 'January', time: 70 },
+            { month: 'February', time: 80 },
+            { month: 'March', time: 25 },
+            { month: 'April', time: 60 },
+            { month: 'May', time: 50 },
+            { month: 'June', time: 40 },
+            { month: 'July', time: 45 },
+            { month: 'August', time: 50 },
+            { month: 'September', time: 55 },
+            { month: 'October', time: 60 },
+            { month: 'November', time: 25 },
+            { month: 'December', time: 30 }
+        ];
+
+        // Extracting labels and data from the datasets
+        const labels = weightData.map(data => data.month);
+        const weights = weightData.map(data => data.weight);
+        const nutritions = nutritionData.map(data => data.intake);
+        const workoutTimes = workoutData.map(data => data.time);
+
+        // Get canvas context for weight chart
+        const weightCtx = document.getElementById('weightChart').getContext('2d');
+
+        // Create the weight chart
+        const weightChart = new Chart(weightCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Weight (lbs)',
+                    data: weights,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                animation: {
+                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                mode: 'horizontal',
+                                scaleID: 'y',
+                                value: weights[0],
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                borderDash: [8, 4],
+                                label: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Get canvas context for nutrition chart
+        const nutritionCtx = document.getElementById('nutritionChart').getContext('2d');
+
+        // Create the nutrition chart
+        const nutritionChart = new Chart(nutritionCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nutrition Intake',
+                    data: nutritions,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                animation: {
+                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                mode: 'horizontal',
+                                scaleID: 'y',
+                                value: weights[0],
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                borderDash: [8, 4],
+                                label: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Get canvas context for workout time chart
+        const workoutCtx = document.getElementById('workoutChart').getContext('2d');
+
+        // Create the workout time chart
+        const workoutChart = new Chart(workoutCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Workout Time (minutes)',
+                    data: workoutTimes,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                animation: {
+                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                mode: 'horizontal',
+                                scaleID: 'y',
+                                value: weights[0],
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                borderDash: [8, 4],
+                                label: {
+                                    enabled: false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
