@@ -93,45 +93,46 @@
     <script>
         // Sample data - replace this with your actual data
         const weightData = [
-            { month: 'January', weight: 50 },
-            { month: 'February', weight: 65 },
-            { month: 'March', weight: 66 },
-            { month: 'April', weight: 57 },
-            { month: 'May', weight: 160 },
-            { month: 'June', weight: 165 },
-            { month: 'July', weight: 162 },
-            { month: 'August', weight: 168 },
-            { month: 'September', weight: 170 },
-            { month: 'October', weight: 75 },
-            { month: 'November', weight: 80 },
-            { month: 'December', weight: 95 }
-        ];
+    { month: 'January', weight: 39 },
+    { month: 'February', weight: 44 },  
+    { month: 'March', weight: 47 },     
+    { month: 'April', weight: 50 },     
+    { month: 'May', weight: 54 },       
+    { month: 'June', weight: 55 },      
+    { month: 'July', weight: 58 },      
+    { month: 'August', weight: 63 },    
+    { month: 'September', weight: 64 }, 
+    { month: 'October', weight: 64 },   
+    { month: 'November', weight: 65 },  
+    { month: 'December', weight: 65 }   
+];
 
-        const nutritionData = [
-            { month: 'January', intake: 1100 },
-            { month: 'February', intake: 1100 },
-            { month: 'March', intake: 1550 },
-            { month: 'April', intake: 1650 },
-            { month: 'May', intake: 1700 },
-            { month: 'June', intake: 1750 },
-            { month: 'July', intake: 1800 },
-            { month: 'August', intake: 1150 },
-            { month: 'September', intake: 600 },
-            { month: 'October', intake: 450 },
-            { month: 'November', intake: 700 },
-            { month: 'December', intake: 1750 }
-        ];
+const nutritionData = [
+    { month: 'January', intake: 900 },
+    { month: 'February', intake: 1300 },
+    { month: 'March', intake: 1400 },
+    { month: 'April', intake: 1600 },
+    { month: 'May', intake: 1400 },
+    { month: 'June', intake: 1500 },
+    { month: 'July', intake: 1600 },
+    { month: 'August', intake: 1700 },
+    { month: 'September', intake: 1600 },
+    { month: 'October', intake: 1500 },
+    { month: 'November', intake: 1300 },
+    { month: 'December', intake: 1200 }
+];
+
 
         const workoutData = [
             { month: 'January', time: 70 },
-            { month: 'February', time: 80 },
+            { month: 'February', time: 40 },
             { month: 'March', time: 25 },
-            { month: 'April', time: 60 },
+            { month: 'April', time: 40 },
             { month: 'May', time: 50 },
             { month: 'June', time: 40 },
             { month: 'July', time: 45 },
             { month: 'August', time: 50 },
-            { month: 'September', time: 55 },
+            { month: 'September', time: 65 },
             { month: 'October', time: 60 },
             { month: 'November', time: 25 },
             { month: 'December', time: 30 }
@@ -156,16 +157,16 @@
                     data: weights,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
+                    borderWidth: 2
                 }]
             },
             options: {
                 animation: {
-                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                    duration: 10000 // Adjust the duration (in milliseconds) as needed
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 },
                 plugins: {
@@ -202,16 +203,16 @@
                     data: nutritions,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
+                    borderWidth: 2
                 }]
             },
             options: {
                 animation: {
-                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                    duration: 10000 // Adjust the duration (in milliseconds) as needed
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 },
                 plugins: {
@@ -221,7 +222,7 @@
                                 type: 'line',
                                 mode: 'horizontal',
                                 scaleID: 'y',
-                                value: weights[0],
+                                value: nutritions[0],
                                 borderColor: 'rgba(255, 99, 132, 1)',
                                 borderWidth: 2,
                                 borderDash: [8, 4],
@@ -248,16 +249,16 @@
                     data: workoutTimes,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    borderWidth: 2
                 }]
             },
             options: {
                 animation: {
-                    duration: 20000 // Adjust the duration (in milliseconds) as needed
+                    duration: 10000 // Adjust the duration (in milliseconds) as needed
                 },
                 scales: {
                     y: {
-                        beginAtZero: false
+                        beginAtZero: true
                     }
                 },
                 plugins: {
