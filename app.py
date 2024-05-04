@@ -41,5 +41,9 @@ def s():
     student_records = get_students_from_locations_collection()
     return render_template('students.html', student_records=student_records)
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('studentdashboard.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
