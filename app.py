@@ -1,9 +1,7 @@
-
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from db_connection import get_locations_collection, get_mongo_client, get_students_from_locations_collection
-
 
 app = Flask(__name__)
 
@@ -92,12 +90,18 @@ def medical():
         'weight': [70]
     })
     
-   
     prediction = predict_weight_change(model, new_data)
     
     return render_template("medical_record.html",predicted_weight=round(prediction[0],3))
 
+@app.route('/update')
+def update():
+    return render_template('update.html')
 
+
+@app.route('/add_stud')
+def add_stud():
+    return render_template('add_stud.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
