@@ -53,5 +53,9 @@ def graph():
 def dietchart():
     return render_template('dietchart.html')
 
+@app.route('/diet')
+def diet():
+    return render_template('diet.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
