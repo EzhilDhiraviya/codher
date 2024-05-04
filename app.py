@@ -20,5 +20,9 @@ def loc():
 def home():
     return render_template('home.html')
 
+@app.route('/centers')
+def centers():
+    return render_template('centers.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
