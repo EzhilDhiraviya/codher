@@ -3,92 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Student Information</title>
-    <style>
-         body {
-            /* Background image with less opacity */
-            background-image: url('sports_image1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            /* Background color with opacity */
-            background-color: rgba(255, 255, 255, 0.5); /* White color with 50% opacity */
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
+    <title>Medical Records</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/medical_record.css') }}">
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around; /* Distribute space around each card */
-        }
-
-        .card {
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 8px;
-            width: 300px;
-            background-color: #e0f2f1; /* Light blue background color for the cards */
-        }
-
-        h1 {
-            text-align: center; /* Center the title */
-        }
-
-        .card p {
-            margin-bottom: 8px;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .card-header h2 {
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
-    <h1>Medical Record Information</h1>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h3>Global hospital</h3> <!-- Add hospital name here -->
-                <h3> 2024-05-01</h3> <!-- Add date here -->
-            </div>
-            <p>Weight (kg): 70</p>
-            <p>Calorie Intake: 2500</p>
-            <p>Workout Duration (minutes): 60</p>
-            <p>Health Problem: High Blood Pressure</p>
-            <p>Prescription: Blood Pressure Medication</p>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Apollo care</h3> <!-- Add hospital name here -->
-                <h3>2024-05-03</h3> <!-- Add date here -->
-            </div>
-            <p>Weight (kg): 75</p>
-            <p>Calorie Intake: 2800</p>
-            <p>Workout Duration (minutes): 45</p>
-            <p>Health Problem: Low Muscle Mass</p>
-            <p>Prescription: Protein Supplements</p>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Care unit</h3> <!-- Add hospital name here -->
-                <h3>2024-05-03</h3> <!-- Add date here -->
-            </div>
-            <p>Weight (kg): 75</p>
-            <p>Calorie Intake: 2800</p>
-            <p>Workout Duration (minutes): 45</p>
-            <p>Health Problem: Low Muscle Mass</p>
-            <p>Prescription: Protein Supplements</p>
-        </div>
-        <!-- Add more cards for additional student information -->
+<h1>Health Records - month wise</h1>
+    <div class="pricing">
+      <div class="plan">
+        <h2>January</h2>
+        <div class="price">10, 2024</div>
+        <ul class="features">
+            <li><strong>Problem:</strong> Knee injury</li>
+            <li><strong>Visited Hospital:</strong> Global Hospital, Dharmapuri</li>
+            <li><strong>Visited Doctor:</strong> Dr.Prabakaran</li>
+            <li><strong>Tests:</strong> Blood Test</li>
+            <li><strong>Scan Reports:</strong> X-ray</li>
+            <li><strong>Prescription:</strong> Rest and physiotherapy</li>
+            <li><strong>Duration of Regime:</strong> 2 weeks</li>
+            <li><strong>Side Effects:</strong> Yes</li>
+            <li><strong>Side Effects Description:</strong> Dizziness, nausea</li>
+        </ul>
+      </div>
+      
     </div>
+
+    
+<div class="predict">
+    <h3>The predicted weight change for this month is: {{ predicted_weight }}%</h3>
+</div>
 </body>
 </html>

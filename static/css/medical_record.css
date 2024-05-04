@@ -1,0 +1,75 @@
+body {
+    padding: 20px;
+    margin: 0;
+    background: transparent;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pricing {
+    display: flex;
+    overflow-x: auto;
+    margin: 30px;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+.plan {
+    flex: 0 0 auto;
+    width: 400px;
+    background-color: transparent;
+    padding: 20px;
+    margin: 35px 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.plan:hover {
+    transform: scale(1.02);
+}
+
+.plan h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.price {
+    margin-bottom: 1rem;
+    font-size: 30px;
+}
+
+.features {
+    list-style-type: none;
+    text-align: left;
+}
+
+.features li {
+    margin: 8px;
+}
+
+.features li .fas {
+    margin-right: 4px;
+}
+
+.features li .fa-check-circle {
+    color: #6ab04c;
+}
+
+.features li .fa-times-circle {
+    color: #eb4d4b;
+}
+
+button {
+    border: none;
+    width: 100%;
+    padding: 12px 35px;
+    margin-top: 1rem;
+    background-color: #6ab04c;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #5c9440;
+}
