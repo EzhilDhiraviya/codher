@@ -353,7 +353,7 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
     left: -50px;
     top: -70px;
     background-size: 14730px !important;
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/braaainsins.png);
+    background: url();
 }
 
 @keyframes braaaains {
@@ -518,17 +518,6 @@ input[type="checkbox"]:checked + div + div .stage_inner__right .link {
     top: -8px;
 }
 
-.stage_inner__footer .f:after {
-    content: 'Ask';
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    position: absolute;
-    color: var(--blue);
-    font-size: 12px;
-    right: 9px;
-    top: 10px;
-}
 
 .stage_inner__footer input {
     padding: 8px;
