@@ -16,6 +16,9 @@ def loc():
     else:
         return "Failed to fetch data from MongoDB."
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
