@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-from db_connection import get_locations_collection
-
+from db_connection import get_locations_collection,get_mongo_client,get_students_from_locations_collection
 app = Flask(__name__)
 
 @app.route('/')
@@ -34,7 +33,13 @@ def otp():
 
 @app.route('/students')
 def students():
-    return render_template('students.html')
+    student_records = get_students_from_locations_collection()
+    return render_template('students.html',student_records=student_records)
+
+@app.route('/s')
+def s():
+    student_records = get_students_from_locations_collection()
+    return render_template('students.html', student_records=student_records)
 
 if __name__ == '__main__':
     app.run(debug=True)
