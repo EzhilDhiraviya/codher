@@ -21,10 +21,31 @@ body {
     margin-bottom: 20px;
   }
   
-  .chart-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+  /* CSS for Chart */
+/* Additional CSS for Chart Container */
+.chart-container {
+  text-align: center;
+  margin:30px 100px;
+
+  padding: 30px;
+  border: 2px solid #007bff; /* Border for the chart container */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow content */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Apply hover effect on chart container */
+.chart-container:hover {
+  border-color: #0056b3; /* Change border color on hover */
+}
+
+
+/* Styles for the chart canvas */
+#dietChart {
+  max-width: 600px;
+  margin: 0 auto; /* Center the chart horizontally */
+}
+
   
   .food-items {
     margin-top: 30px;

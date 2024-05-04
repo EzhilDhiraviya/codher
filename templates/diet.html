@@ -4,37 +4,106 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Diet Summary</title>
-<link rel="stylesheet" href="diet.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/diet.css') }}">
+
 </head>
 <body>
 
 <div class="container">
-  <h1>Student Diet Summary</h1>
+  <h1>Sri's Diet Summary</h1>
+
+  <p style="text-align: center;">She is taking a good diet</p>
 
   <!-- Chart -->
   <div class="chart-container">
     <canvas id="dietChart"></canvas>
   </div>
 
-  <!-- Food Items -->
-  <div class="food-items">
+<!-- Food Items -->
+<div class="food-items">
     <h2>Food Items</h2>
     <div class="meal">
       <h3>Pre-Workout</h3>
-      <!-- Display pre-workout food items here -->
+      <div class="food-item">
+        <img src="food1.jpg" alt="Food 1">
+        <div class="food-details">
+          <h4>Food Name 1</h4>
+          <p>Quantity: 1 serving</p>
+          <p>Calories: 200</p>
+          <!-- Add more details here -->
+        </div>
+      </div>
+      <!-- Add more pre-workout food items here -->
     </div>
     <div class="meal">
       <h3>Post-Workout</h3>
-      <!-- Display post-workout food items here -->
+      <div class="food-item">
+        <img src="food2.jpg" alt="Food 2">
+        <div class="food-details">
+          <h4>Food Name 2</h4>
+          <p>Quantity: 1 serving</p>
+          <p>Calories: 250</p>
+          <!-- Add more details here -->
+        </div>
+      </div>
+      <!-- Add more post-workout food items here -->
     </div>
     <div class="meal">
       <h3>Recovery Meals</h3>
-      <!-- Display recovery meal items here -->
+      <div class="food-item">
+        <img src="food3.jpg" alt="Food 3">
+        <div class="food-details">
+          <h4>Food Name 3</h4>
+          <p>Quantity: 1 serving</p>
+          <p>Calories: 300</p>
+          <!-- Add more details here -->
+        </div>
+      </div>
+      <!-- Add more recovery meal items here -->
     </div>
   </div>
+  
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
+<script>
+    // Sample data for categories
+    var categories = ['Protein', 'Carbs', 'Fats', 'Vitamins', 'Minerals'];
+  
+    // Sample values for each category (in grams)
+    var values = [80, 200, 50, 30, 20];
+  
+    // Generate a random color for each category
+    var colors = values.map(function() {
+      return '#' + Math.floor(Math.random()*16777215).toString(16);
+    });
+  
+    // Chart configuration
+    var config = {
+      type: 'doughnut',
+      data: {
+        labels: categories,
+        datasets: [{
+          label: 'Nutrient Intake (grams)',
+          data: values,
+          backgroundColor: colors,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    };
+  
+    // Create the chart
+    var ctx = document.getElementById('dietChart').getContext('2d');
+    new Chart(ctx, config);
+  </script>
 </body>
 </html>
