@@ -20,9 +20,17 @@ def loc():
 def home():
     return render_template('home.html')
 
+@app.route('/org')
+def org():
+    return render_template('organization.html')
+
 @app.route('/centers')
 def centers():
     return render_template('centers.html')
+
+@app.route('/otp')
+def otp():
+    return render_template('otp.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
