@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Diet Summary</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/diet.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/load.css') }}"> -->
+
 
 </head>
 <body>
+    <!-- <div class="loader"></div> -->
+
+<!-- <div id="content" style="display: none;"> -->
 
 <div class="container">
   <h1>Sri's Diet Summary</h1>
@@ -115,45 +120,10 @@
   
 </div>
 
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Sample data for categories
-    var categories = ['Protein', 'Carbs', 'Fats', 'Vitamins', 'Minerals'];
-  
-    // Sample values for each category (in grams)
-    var values = [80, 200, 50, 30, 20];
-  
-    // Generate a random color for each category
-    var colors = values.map(function() {
-      return '#' + Math.floor(Math.random()*16777215).toString(16);
-    });
-  
-    // Chart configuration
-    var config = {
-      type: 'doughnut',
-      data: {
-        labels: categories,
-        datasets: [{
-          label: 'Nutrient Intake (grams)',
-          data: values,
-          backgroundColor: colors,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    };
-  
-    // Create the chart
-    var ctx = document.getElementById('dietChart').getContext('2d');
-    new Chart(ctx, config);
-  </script>
+<script src="{{ url_for('static', filename='js/dietchart.js') }}"></script>
+<!-- <script src="{{ url_for('static', filename='js/load.js') }}"></script> -->
 </body>
 </html>
