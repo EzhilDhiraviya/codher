@@ -232,4 +232,21 @@
   .right .stock-logo.dandruft:before {
     background: linear-gradient(to top right, #f88781, #f7c682);
   }
-  
+  .button-container {
+    text-align: center;
+    margin-top: 50px; /* Optional margin for spacing */
+}
+
+.gradient-button {
+    background: linear-gradient(to right, #ffffff, #f0f0f0);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.gradient-button:hover {
+    background: linear-gradient(to right, #f0f0f0, #ffffff);
+}

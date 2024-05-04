@@ -5,18 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Diet Summary</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/diet.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/load.css') }}"> -->
+
 
 </head>
 <body>
+    <!-- <div class="loader"></div> -->
+
+<!-- <div id="content" style="display: none;"> -->
 
 <div class="container">
   <h1>Sri's Diet Summary</h1>
-
-  <p style="text-align: center;">She is taking a good diet</p>
+  <p style="text-align: center;">STATUS : Good</p>
 
   <!-- Chart -->
   <div class="chart-container">
     <canvas id="dietChart"></canvas>
+    <p class="chart">Overall diet chart of a month</p><br>
+
   </div>
 
 <!-- Food Items -->
@@ -24,36 +30,85 @@
     <h2>Food Items</h2>
     <div class="meal">
       <h3>Pre-Workout</h3>
+      
       <div class="food-item">
-        <img src="food1.jpg" alt="Food 1">
+        <img src="https://i0.wp.com/www.brambleandspice.com/wp-content/uploads/2019/04/IMG_2229.jpg?fit=3888%2C2592&ssl=1" alt="Food 2">
         <div class="food-details">
-          <h4>Food Name 1</h4>
-          <p>Quantity: 1 serving</p>
-          <p>Calories: 200</p>
+          <h4>Boiled Egg</h4>
+          <p>Quantity: 2.5 pieces</p>
+          <p>Calories: 175</p>
           <!-- Add more details here -->
         </div>
       </div>
+
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.k5Vbze0t7Kxoi082iXLYZAHaHa?rs=1&pid=ImgDetMain" alt="Food 1">
+        <div class="food-details">
+          <h4>Corn with herb butter</h4>
+          <p>Quantity: 3 pieces</p>
+          <p>Calories: 230</p>
+          <!-- Add more details here -->
+        </div>
+      </div>
+
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.pECl3fecIvazVPdf_vp19AHaE7?rs=1&pid=ImgDetMain" alt="Food 1">
+        <div class="food-details">
+          <h4>Orange Juice</h4>
+          <p>Quantity: 250 ml</p>
+          <p>Calories: 120</p>
+          <!-- Add more details here -->
+        </div>
+      <p style="margin: 20px;">Total : 525 Calories</p> 
+
+      </div>
+
       <!-- Add more pre-workout food items here -->
     </div>
     <div class="meal">
       <h3>Post-Workout</h3>
+
       <div class="food-item">
-        <img src="food2.jpg" alt="Food 2">
+        <img src="https://bing.com/th?id=OSK.99166047173f70ad0a8015363c9131af" alt="Food 1">
         <div class="food-details">
-          <h4>Food Name 2</h4>
+          <h4>Baked Chicken Breasts</h4>
           <p>Quantity: 1 serving</p>
-          <p>Calories: 250</p>
+          <p>Calories: 215</p>
           <!-- Add more details here -->
         </div>
       </div>
+
+      <div class="food-item">
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-raita-086-ls-1656700127.jpeg?crop=0.447xw:1.00xh;0.405xw,0&resize=480:*" alt="Food 1">
+        <div class="food-details">
+          <h4>Cucumber Yogurt</h4>
+          <p>Quantity: 1 cup</p>
+          <p>Calories: 130</p>
+          <!-- Add more details here -->
+        </div>
+      </div>
+
+      <div class="food-item">
+        <img src="https://th.bing.com/th/id/OIP.p8ABot-hL0dosyLPr7yxoAHaLH?pid=ImgDet&w=182&h=273&c=7&dpr=1.3" alt="Food 1">
+        <div class="food-details">
+          <h4>Whey Protein with Banana</h4>
+          <p>Quantity: 250 ml</p>
+          <p>Calories: 215</p>
+          <!-- Add more details here -->
+        </div>
+      <p style="margin: 20px;">Total : 560 Calories</p> 
+
+      </div>
+
+      
       <!-- Add more post-workout food items here -->
     </div>
     <div class="meal">
       <h3>Recovery Meals</h3>
       <div class="food-item">
-        <img src="food3.jpg" alt="Food 3">
+        <img src="https://th.bing.com/th/id/OIP.bzbu_2ZYLVmD4Xgi8CzCrgHaEK?rs=1&pid=ImgDetMain" alt="Food 3">
         <div class="food-details">
-          <h4>Food Name 3</h4>
+          <h4>Grilled Salmon with Quinoa and Roasted Vegetables</h4>
           <p>Quantity: 1 serving</p>
           <p>Calories: 300</p>
           <!-- Add more details here -->
@@ -65,45 +120,10 @@
   
 </div>
 
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Sample data for categories
-    var categories = ['Protein', 'Carbs', 'Fats', 'Vitamins', 'Minerals'];
-  
-    // Sample values for each category (in grams)
-    var values = [80, 200, 50, 30, 20];
-  
-    // Generate a random color for each category
-    var colors = values.map(function() {
-      return '#' + Math.floor(Math.random()*16777215).toString(16);
-    });
-  
-    // Chart configuration
-    var config = {
-      type: 'doughnut',
-      data: {
-        labels: categories,
-        datasets: [{
-          label: 'Nutrient Intake (grams)',
-          data: values,
-          backgroundColor: colors,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    };
-  
-    // Create the chart
-    var ctx = document.getElementById('dietChart').getContext('2d');
-    new Chart(ctx, config);
-  </script>
+<script src="{{ url_for('static', filename='js/dietchart.js') }}"></script>
+<!-- <script src="{{ url_for('static', filename='js/load.js') }}"></script> -->
 </body>
 </html>
