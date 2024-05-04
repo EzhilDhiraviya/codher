@@ -1,11 +1,11 @@
-app = Flask(__name__)
+
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from db_connection import get_locations_collection, get_mongo_client, get_students_from_locations_collection
 
 
-
+app = Flask(__name__)
 def load_data():
     data = pd.read_csv('athlete_health_records.csv')
     return data
