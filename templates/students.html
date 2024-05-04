@@ -13,6 +13,51 @@
   <h1>Student Records</h1>
   <input type="text" id="searchInput" placeholder="Search by category...">
   <div class="row">
+    <div class="card">
+        <img src="C:\Users\padma\OneDrive\Desktop\PADMA_PRABHA_M.jpg" alt="padma">
+        <div class="info">
+          <p><strong>Name:</strong> padma</p>
+          <p><strong>Sport:</strong> kabbadi</p>
+          <p><strong>Age:</strong> 16</p>
+          <p><strong>Join Date:</strong>27/5/2023</p>
+          <p><strong>Weight:</strong> 50</p>
+          <p><strong>Height:</strong>156</p>
+          <p><strong>Health Condition:</strong>good</p>
+          <button onclick="window.location.href = 'dashboard.html';">Go to Dashboard</button>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.z5DlZ6p78vxUV1AokolgTQHaGt?w=163&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="prabha">
+        <div class="info">
+          <p><strong>Name:</strong> prabha</p>
+          <p><strong>Sport:</strong> kabbadi</p>
+          <p><strong>Age:</strong> 17</p>
+          <p><strong>Join Date:</strong>29/6/2023</p>
+          <p><strong>Weight:</strong> 57</p>
+          <p><strong>Height:</strong>165</p>
+          <p><strong>Health Condition:</strong>bad</p>
+          <button onclick="window.location.href = 'dashboard.html';">Go to Dashboard</button>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="C:\Users\padma\OneDrive\Desktop\PADMA_PRABHA_M.jpg" alt="ezhil">
+        <div class="info">
+          <p><strong>Name:</strong> ezhil</p>
+          <p><strong>Sport:</strong> kabbadi</p>
+          <p><strong>Age:</strong> 15</p>
+          <p><strong>Join Date:</strong>27/12/2023</p>
+          <p><strong>Weight:</strong> 51</p>
+          <p><strong>Height:</strong>155</p>
+          <p><strong>Health Condition:</strong>good</p>
+          <button onclick="window.location.href = 'dashboard.html';">Go to Dashboard</button>
+
+        </div>
+      </div>
+
     {% for student in student_records %}
     <div class="card">
       <img src="{{ student.photo }}" alt="{{ student.name }}">
