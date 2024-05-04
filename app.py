@@ -45,5 +45,9 @@ def s():
 def dashboard():
     return render_template('studentdashboard.html')
 
+@app.route('/graph')
+def graph():
+    return render_template('graph.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
