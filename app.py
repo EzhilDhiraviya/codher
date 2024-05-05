@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-from db_connection import get_locations_collection, get_mongo_client, get_students_from_locations_collection
+from db_connection import get_locations_collection, get_mongo_client, get_students_from_locations_collection, get_sdats, get_records_by_sdat
 
 app = Flask(__name__)
 
@@ -24,10 +24,12 @@ def home():
 
 @app.route('/org')
 def org():
-    return render_template('organization.html')
+    l= get_sdats()
+    return render_template('organization.html',l=l)
 
 @app.route('/centers')
 def centers():
+    l= get_sdats()
     return render_template('centers.html')
 
 @app.route('/otp')
@@ -36,7 +38,7 @@ def otp():
 
 @app.route('/students')
 def students():
-    student_records = get_students_from_locations_collection()
+    student_records = get_records_by_sdat("Dharmapuri")
     return render_template('students.html',student_records=student_records)
 
 @app.route('/s')

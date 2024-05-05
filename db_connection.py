@@ -31,3 +31,38 @@ def get_students_from_locations_collection():
         return student_records
     else:
         return None
+    
+
+def get_sdats():
+    client = get_mongo_client()
+    if client:
+        db = client['sports']  # Connect to the 'sports' database
+        cursor = db.sdats  
+        cursor = db.sdats.find({}, {'_id': 0})  # Exclude the '_id' field from the result
+        sdats = [sdat for sdat in cursor]
+        sdats_values = [list(sdat.values()) for sdat in sdats]
+        print(sdats_values)
+        return sdats_values
+    else:
+        return None
+    
+def get_records_by_sdat(sdat_value):
+    client = get_mongo_client()
+    if client:
+        db = client['sports']  # Connect to the 'sports' database
+        collection = db['students']  # Assuming the collection name is 'students', change if needed
+        cursor = collection.find({}, {'_id': 0})  # Exclude the '_id' field from the result
+        # records = [record for record in cursor]
+        # print(records)
+        matching_records = list(collection.find({"sdat": sdat_value}))
+        for record in matching_records:
+            record.pop('_id', None)  # Remove the _id field from each document
+        if matching_records:
+            print("Matching records:")
+            for record in matching_records:
+                print(record)
+        else:
+            print("No matching records found.")
+        return matching_records
+    else:
+        return None
