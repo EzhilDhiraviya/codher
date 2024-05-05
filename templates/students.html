@@ -66,7 +66,7 @@
 
     {% for student in student_records %}
     <div class="card">
-      <img src="{{ student.photo }}" alt="{{ student.name }}">
+      
       <div class="info">
         <p><strong>Name:</strong> {{ student.name }}</p>
         <p><strong>Sport:</strong> {{ student.sport }}</p>
@@ -74,7 +74,11 @@
         <p><strong>Join Date:</strong> {{ student.join_date }}</p>
         <p><strong>Weight:</strong> {{ student.weight }}</p>
         <p><strong>Height:</strong> {{ student.height }}</p>
+        <p><strong>Blood Group:</strong> O+</p>
+
         <p><strong>Health Condition:</strong> {{ student.health_condition }}</p>
+        <button onclick="window.location.href = '/dashboard';">Go to Dashboard</button>
+
       </div>
     </div>
     {% endfor %}
@@ -104,7 +108,10 @@ function displayStudentRecords(records) {
         <p><strong>Join Date:</strong> ${student.join_date}</p>
         <p><strong>Weight:</strong> ${student.weight}</p>
         <p><strong>Height:</strong> ${student.height}</p>
+        <p><strong>Blood Group:</strong> O+</p>
         <p><strong>Health Condition:</strong> ${student.health_condition}</p>
+        <button onclick="window.location.href = '/dashboard';">Go to Dashboard</button>
+
       </div>
     `;
     studentRecordsDiv.appendChild(card);
