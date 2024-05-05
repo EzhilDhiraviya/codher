@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .dropdown {
+            margin-top: 20px;
+        }
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        .dropdown label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Student Record</h1>
+        <form action="/update" method="post">
+            <div class="dropdown">
+                <label for="medical_record">Medical Record:</label>
+                <select id="medical_record" name="medical_record">
+                    <option value="none">Select Medical Record</option>
+                    <option value="update_medical_record">Update Medical Record</option>
+                </select>
+                <div id="medical_details" style="display:none;">
+                    <label for="last_visit_hospital">Last Visit Hospital:</label>
+                    <input type="text" id="last_visit_hospital" name="last_visit_hospital">
+                    <!-- Additional fields related to medical record -->
+                </div>
+            </div>
+            <div class="dropdown">
+                <label for="diet_record">Diet Record:</label>
+                <select id="diet_record" name="diet_record">
+                    <option value="none">Select Diet Record</option>
+                    <option value="update_diet_record">Update Diet Record</option>
+                </select>
+                <div id="diet_details" style="display:none;">
+                    <!-- Additional fields related to diet record -->
+                </div>
+            </div>
+            <div class="dropdown">
+                <label for="achievements">Achievements:</label>
+                <select id="achievements" name="achievements">
+                    <option value="none">Select Achievements</option>
+                    <option value="update_achievements">Update Achievements</option>
+                </select>
+                <div id="achievements_details" style="display:none;">
+                    <!-- Additional fields related to achievements -->
+                </div>
+            </div>
+            <div class="dropdown">
+                <label for="academic_record">Academic Record:</label>
+                <select id="academic_record" name="academic_record">
+                    <option value="none">Select Academic Record</option>
+                    <option value="update_academic_record">Update Academic Record</option>
+                </select>
+                <div id="academic_details" style="display:none;">
+                    <!-- Additional fields related to academic record -->
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Show additional fields based on selected option
+        document.getElementById('medical_record').addEventListener('change', function() {
+            var medical_details = document.getElementById('medical_details');
+            if (this.value === 'update_medical_record') {
+                medical_details.style.display = 'block';
+            } else {
+                medical_details.style.display = 'none';
+            }
+        });
+        document.getElementById('diet_record').addEventListener('change', function() {
+            var diet_details = document.getElementById('diet_details');
+            if (this.value === 'update_diet_record') {
+                diet_details.style.display = 'block';
+            } else {
+                diet_details.style.display = 'none';
+            }
+        });
+        document.getElementById('achievements').addEventListener('change', function() {
+            var achievements_details = document.getElementById('achievements_details');
+            if (this.value === 'update_achievements') {
+                achievements_details.style.display = 'block';
+            } else {
+                achievements_details.style.display = 'none';
+            }
+        });
+        document.getElementById('academic_record').addEventListener('change', function() {
+            var academic_details = document.getElementById('academic_details');
+            if (this.value === 'update_academic_record') {
+                academic_details.style.display = 'block';
+            } else {
+                academic_details.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

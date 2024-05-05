@@ -48,6 +48,7 @@ def s():
 
 @app.route('/dashboard')
 def dashboard():
+
     return render_template('studentdashboard.html')
 
 @app.route('/graph')
